@@ -7,6 +7,20 @@
 </head>
 <body>
     
-    <script src="fridayTask.js"></script>
+    <h1>Triangle Perimeter Calculator</h1>
+	<button onclick="calculatePerimeter()">Calculate Perimeter</button>
+	
+	<script>
+		function calculatePerimeter() {
+			const a = parseFloat(prompt("Enter side a:"));
+			const b = parseFloat(prompt("Enter side b:"));
+			const c = parseFloat(prompt("Enter side c:"));
+			const perimeter = a + b + c;
+			alert("The perimeter of the triangle is " + perimeter);
+		}
+	</script>
+
+    <script src="exerciseA.js" ></script>
+    <!-- <script src="fridayTask.js"></script> -->
 </body>
 </html>
