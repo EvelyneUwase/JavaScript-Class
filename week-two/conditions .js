@@ -14,9 +14,8 @@
 // }
 
 // boolean
-// let isRaining = true;
-// if (isRaining){
-//     console.log("Remember to carry an umbrella")
+// l for (let number = 0; number <= 8; number++){
+//     console.log(`number ${number} * ${number} = ${number * number}`);
 // }
 
 // using else

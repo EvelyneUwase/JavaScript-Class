@@ -40,3 +40,13 @@ calculateTotalPrice("Gnuts", 2000, 3)
 calculateTotalPrice("Maize", 7000, 6)
 calculateTotalPrice("cowpeas", 6000, 5)
 calculateTotalPrice("SoyBeans", 4000, 2)
+
+
+function totalCost (item, price, quantity){
+    console.log("Your total price is:" + item, "at" + price,  + quantity);
+}
+//evoke by
+totalCost ("bag", 50000, 1)
+totalCost ("sandles", 20000, 4)
+totalCost ("mirror", 105000, 1)
+totalCost ("towel", 30000, 1)

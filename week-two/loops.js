@@ -27,11 +27,17 @@ look for a graph that represents loop
 //     console.log(`number ${number} * ${number} = ${number * number}`);
 // }
 
-// for numbers
-let  numbers = [1, 2, 3, 4, 5, 6,]
-let sum = 0;
-for (let i = 0; i < numbers.length; i ++ ){
-    sum = sum + numbers[i]
-// [i] represents the index of different values
-}
-console.log(sum)
+// // for numbers
+// let  numbers = [1, 2, 3, 4, 5, 6,]
+// let sum = 0;
+// for (let i = 0; i < numbers.length; i ++ ){
+//     sum = sum + numbers[i]
+// // [i] represents the index of different values
+// }
+// console.log(sum)
+
+
+// let product = ["Beans", "Rice","Maize"]
+// for (product = 0; product <= product.length; product++){
+//       console.log(product);
+// }
