@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>kGL Store Stock Management.</h1>
+    <ul id="stockList">
+        <li>Beans<span id="beanStock">100</span>kg</li>
+        <li>Maize<span id="maizeStock">200</span>kg</li>
+        <li>Cow Peas<span id="cowPeasStock">150</span>kg</li>
+    </ul>
+
+    <p>Select produce</p>
+
+    <select id="produce">
+        <option value="beans">Beans</option>
+        <option value="maize">Maize</option>
+        <option value="cowPeas">Cow Peas</option>
+    </select>
+
+    <input type="number" id="newStock" placeholder="Enter new stock">
+
+    <button onclick="updateStock()">Update Stock</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p id="paragraph1">This is group four</p>
+  <p id="paragraph2">With Laura</p>
+  <p id="paragraph3">Ojera Charity</p>
+  <p id="paragraph4">Sarah and Faith</p>
+  <script>
+    const firstParagraph = document.querySelector("p");
+    console.log(firstParagraph)
+
+    let paragraph1 = document.querySelector("#paragraph1");
+    let paragraph2 = document.querySelector("#paragraph2");
+    let paragraph3 = document.querySelector("#paragraph3");
+    let paragraph4 = document.querySelector("#paragraph4");
+
+    console.log(paragraph1)
+    console.log(paragraph2)
+    console.log(paragraph3)
+    console.log(paragraph4)
+
+    const allParagraphs = document.querySelectorAll("p");
+    console.log(allParagraphs)
+
+    allParagraphs.forEach((p, index) => { console.log(`Paragraph ${index + 1}:`, p.textContent); });
+
+    paragraph4.textContent = "fourth paragraph";
+    console.log(paragraph4)
+
+    // paragraph1[0].set.attribute = ("class, paragraphs");
+    // paragraph2[1].set.attribute = ("class, paragraphs");
+    // paragraph3[2].set.attribute = ("class, paragraphs"); 
+    // paragraph4[3].set.attribute = ("class, paragraphs"); 
+
+    allParagraphs[0].setAttribute("id", "paragraph1");
+    allParagraphs[1].id = "paragraph2";
+    allParagraphs[2].setAttribute("class", "new-class");
+    allParagraphs[3].className = "updated-class"
+
+
+    //    exercisetwo 
+
+    let paragraphs = document.getElementsByTagName("p");
+    for (var i = 0; i < paragraphs.length; i++) {
+      paragraphs[i].style.color = "black";
+      paragraphs[i].style.backgroundColor = "linen";
+      paragraphs[i].style.fontSize = "24px";
+      paragraphs[i].style.fontFamily = "Arial";
+      paragraphs[i].style.border = "1px solid black";
+    }
+
+// 2
+    const paragraphs1 = document.querySelectorAll("p");
+    paragraphs1.forEach((para, index) => {
+      if (index === 0 || index === 2) {
+        para.style.color = "green";
+      } else if (index === 1 || index === 3) {
+        para.style.color = "red";
+      }
+    });
+
+
+      // n0 3 
+    let paragraphs9 = document.querySelectorAll('p');
+
+    // Loop through each paragraph and set the text content, id, and class
+    paragraphs9.forEach((paragraph, index) => {
+      // Set text content
+      paragraph.textContent = `This is paragraph ${index + 1}`;
+      paragraph.id = `paragraph-${index + 1}`;
+      paragraph.className = `class-${index + 1}`;
+    });
+
+
+  </script>
+</body>
+
+</html>
