@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            cursor: pointer;
+            background: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .options button:hover {
+            background: #ff3b2f;
+        }
+        .hidden {
+            display: none;
+        }
+        #nextBtn, #retryBtn {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.0"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz App</h1>
+        <div id="quiz">
+            <div id="question" class="question"></div>
+            <div id="options" class="options"></div>
+            <button onclick="nextQuestion()" class="hidden" id="nextBtn">Next</button>
+        </div>
+        <div id="result" class="hidden">
+            <h2>Your Score: <span id="score"></span></h2>
+            <button onclick="restartQuiz()" id="retryBtn">Retry Quiz</button>
+        </div>
+    </div>
+    <audio id="clapSound" src="https://www.soundjay.com/human/applause-01.mp3"></audio>
+    <audio id="failSound" src="https://www.soundjay.com/button/beep-10.mp3"></audio>
+    <script>
+        const quizData = [
+            { question: "What is the capital of France?", options: ["Berlin", "Madrid", "Paris", "Rome"], answer: "Paris" },
+            { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Saturn"], answer: "Mars" },
+            { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], answer: "4" },
+            { question: "What is always coming but never arrives?", options: ["Tomorrow", "A Bus", "An Expectation", "Change"], answer: "Tomorrow" },
+            { question: "What goes up but never comes down?", options: ["Balloon", "Smoke", "Age", "Soul"], answer: "Age" },
+            { question: "What can one catch that is not thrown?", options: ["Mosquito", "Breathe", "Grenade", "Cold"], answer: "Cold" }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            // Hide result and show quiz
+            document.getElementById("result").classList.add("hidden");
+            document.getElementById("quiz").classList.remove("hidden");
+            
+            const questionEl = document.getElementById("question");
+            const optionsEl = document.getElementById("options");
+            const nextBtn = document.getElementById("nextBtn");
+            
+            // Set question text
+            questionEl.innerText = quizData[currentQuestion].question;
+            
+            // Clear previous options and add new ones
+            optionsEl.innerHTML = "";
+            quizData[currentQuestion].options.forEach(option => {
+                const button = document.createElement("button");
+                button.innerText = option;
+                button.onclick = () => checkAnswer(option);
+                optionsEl.appendChild(button);
+            });
+            
+            nextBtn.classList.add("hidden");
+        }
+
+        function confettiAnimation() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        function checkAnswer(selectedOption) {
+            const correctAnswer = quizData[currentQuestion].answer;
+            const nextBtn = document.getElementById("nextBtn");
+            
+            // Check if the answer is correct
+            if (selectedOption === correctAnswer) {
+                score++;
+                document.getElementById("clapSound").play();
+                confettiAnimation();
+                alert("Correct!");
+            } else {
+                document.getElementById("failSound").play();
+                alert("Wrong! The correct answer is " + correctAnswer);
+            }
+            
+            // Show next button after selecting an answer
+            nextBtn.classList.remove("hidden");
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("quiz").classList.add("hidden");
+            document.getElementById("result").classList.remove("hidden");
+            document.getElementById("score").innerText = `${score} / ${quizData.length}`;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            loadQuestion();
+        }
+
+        // Start quiz on page load
+        loadQuestion();
+    </script>
+</body>
+</html>

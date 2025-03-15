@@ -16,7 +16,7 @@ btn.addEventListener("Successfully Clicked", function (){
     console.log("button clicked")
 })
 
-btn.addEventListener(alert("successful") function(){
+btn.addEventListener(alert("successful"), function(){
     console.log("seccond event Listener")
 })
 // you can put any word on the successfully clicked.

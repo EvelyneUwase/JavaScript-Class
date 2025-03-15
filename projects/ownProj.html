@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="ownProj.css">
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>It's Time to Test Your IQ</h1>
+        
+        <!-- Start button -->
+        <button id="start-btn" onclick="startQuiz()">Start Quiz</button>
+
+        <div id="question-container" style="display: none;">
+            <p id="question-text"></p>
+            <ul id="options-container"></ul>
+            <p id="timer"></p>
+        </div>
+
+        <div id="result-container" style="display: none;">
+            <p id="score"></p>
+            <button id="retry-btn" style="display: none;" onclick="retryQuiz()">Retry Quiz</button>
+            <button id="next-btn" onclick="nextQuestion()">Quite</button>
+        </div>
+    </div>
+
+    <audio id="correct-sound" src="correct-sound.mp3"></audio>
+    <audio id="failure-sound" src="failure-sound.mp3"></audio>
+
+    <canvas id="confetti-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 100; display: none;"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.0/dist/confetti.browser.min.js"></script>
+
+    <script src="ownProj.js"></script>
+</body>
+</html>
